@@ -22,7 +22,6 @@ with open('data_user.txt', 'a+') as f:
         print()
         # print()
         time.sleep(2)
-        os.system('cls' if os.name == 'nt' else 'clear')
         f.close()
     else:
         f.read()
@@ -40,8 +39,17 @@ with open('data_user.txt', 'a+') as f:
             print()
             # print()
             time.sleep(2)
-            os.system('cls' if os.name == 'nt' else 'clear')
             f.close()
+
+
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
+
+
+clearConsole()
 
 # navegar pelos itens(1), depositar dinheiro, ir para o carrinho e sair.
 itens = {
@@ -75,7 +83,8 @@ def compra():
         print('Para continuar comprando --> [1]')
         print('Para remover algum item --> [2]')
         print('Para finalizar compra --> [3]')
-        print('Para sair --> [4]')
+        print('Para ver carrinho --> [4]')
+        print('Para sair --> [5]')
         decisao = input()
         print()
 
@@ -106,6 +115,12 @@ def compra():
             # tem que ver como eu vou fazer pro cliente pagar
             print(f'Obrigado por comprar conosco, {user}!')
             break
+
+        elif decisao == '4':
+            for key, value in carrinho.compras.items():  # lista os itens
+                print(f'{key}, {value:.2f}R$')
+            print()
+            continue
         else:
             break
 
