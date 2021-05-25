@@ -1,5 +1,7 @@
 # E-Commerce
 
+- No frameworks used. Only Python 3 ( terminal application )
+
 ## Simple E-Commerce application with the following features:
 
 ### Shopping Cart ( You can add items, remove items and finish the purchase )
